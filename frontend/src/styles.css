@@ -1820,3 +1820,14 @@ button,label,.az-eyebrow{text-transform:none!important}
   .tabs{padding-bottom:max(10px,env(safe-area-inset-bottom))}
   .cc-top,.cc-replay,.col.stage-agents{display:none!important}
 }
+
+/* iPhone: compact top bar (the fake status bar is gone) and a slimmer bottom tab bar */
+@media (max-width:760px){
+  .topbar{padding:max(env(safe-area-inset-top),12px) 16px 8px!important}
+  .topbar .ai-badge.lockup .nav-logo{height:15px}
+  .tabs{padding:5px 4px max(6px,env(safe-area-inset-bottom))!important}
+  .tabs button{height:38px!important;gap:1px}
+  .tabs button svg{width:22px!important;height:22px!important}
+  .tabs button span:not(.qr-fab):not(.ghostlbl){font-size:10px!important}
+  .tabs button.ctr .qr-fab,.tabs button.ctr.on .qr-fab{top:-16px!important;width:44px!important;height:44px!important;min-width:44px!important}
+}
