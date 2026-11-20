@@ -1849,3 +1849,15 @@ button,label,.az-eyebrow{text-transform:none!important}
   .v-top{padding-top:max(env(safe-area-inset-top),16px)!important}
   .voice{padding-bottom:6px}
 }
+
+/* iPhone: every page header / sub-page nav is compact (the fake status bar space is gone) */
+@media (max-width:760px){
+  .hdr{padding:max(env(safe-area-inset-top),12px) 16px 10px!important}
+  .pg-nav{padding:max(env(safe-area-inset-top),12px) 12px 8px!important}
+}
+@media (max-width:760px){
+  .ios-nav{padding:max(env(safe-area-inset-top),12px) 18px 2px!important}
+  .ai-head{padding:max(env(safe-area-inset-top),12px) 18px 8px!important}
+  .hero{padding-top:max(env(safe-area-inset-top),20px)!important}
+  .content{scroll-padding-top:20px}
+}
