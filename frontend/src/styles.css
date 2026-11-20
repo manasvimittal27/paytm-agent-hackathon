@@ -1811,3 +1811,12 @@ button,label,.az-eyebrow{text-transform:none!important}
 .cc-grid{grid-template-rows:minmax(calc(100vh - 56px),auto) auto!important;row-gap:90px}
 .cc-replay{margin-bottom:40px}
 @media (max-width:1060px){.cc-grid{grid-template-rows:none!important;row-gap:40px}}
+
+/* Real phones: a plain website, no phone frame and no fake status bar; fits the visible browser height */
+@media (max-width:760px){
+  html,body{background:#fff;overscroll-behavior-y:none}
+  .statusbar{display:none!important}
+  .col.left .phone,.phone{width:100%!important;height:100vh!important;height:100dvh!important;max-width:none;border:0!important;border-radius:0!important;box-shadow:none!important}
+  .tabs{padding-bottom:max(10px,env(safe-area-inset-bottom))}
+  .cc-top,.cc-replay,.col.stage-agents{display:none!important}
+}
