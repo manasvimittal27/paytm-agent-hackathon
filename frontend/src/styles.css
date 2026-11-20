@@ -1842,3 +1842,10 @@ button,label,.az-eyebrow{text-transform:none!important}
   .col.left{position:fixed;inset:0;width:100%;height:100%;margin:0;padding:0}
   .col.left .phone,.phone{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;margin:0!important;border:0!important;border-radius:0!important;overflow:hidden}
 }
+
+/* iPhone: blend the browser's own strips with the app, and close the empty space on the start screen */
+@media (max-width:760px){
+  html,body{background:#f4f7fc!important}
+  .v-top{padding-top:max(env(safe-area-inset-top),16px)!important}
+  .voice{padding-bottom:6px}
+}
