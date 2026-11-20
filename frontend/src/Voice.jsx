@@ -95,7 +95,9 @@ export default function Voice({ m, chat, busy, run, reveal, speak, setSpeak, mod
   const setLevel = (v) => orb.current && orb.current.style.setProperty('--lvl', Math.max(0, Math.min(1, v)).toFixed(3))
   const last = chat[chat.length - 1]
   const lastMe = [...chat].reverse().find((c) => c.who === 'me')
-  const reply = last && last.who === 'ai' && chat.length > 1 ? last : null
+  const [home, setHome] = useState(false) // 'Back' hides the answer and shows the full start screen again
+  useEffect(() => { setHome(false) }, [chat.length])
+  const reply = !home && last && last.who === 'ai' && chat.length > 1 ? last : null
   const shown = reply ? { ...reply, text: (reply.texts && reply.texts[lang]) || reply.text } : null
   const info = summarize(run, shown, lang)
   const T = (k, ...a) => t(lang, k, ...a)
@@ -272,6 +274,7 @@ export default function Voice({ m, chat, busy, run, reveal, speak, setSpeak, mod
     <div className={cls}>
       <div className="aurora" /><div className="aurora a2" />
       <div className="v-top">
+        {reply && <button className="v-back" onClick={() => { stopSpeaking(); setPhase('idle'); setHome(true) }} aria-label="Back to start"><svg width="9" height="15" viewBox="0 0 12 20" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2L2 10l8 8" /></svg>Back</button>}
         <span className="v-who"><MerchantLogo d={m.d} size={22} /><span className="v-name">{m.profile.name}</span></span>
         {!ENGLISH_ONLY && <div className="lang" role="group" aria-label="Language">{Object.entries(LANGS).map(([k, lab]) => <button key={k} className={lang === k ? 'on' : ''} onClick={() => setLang(k)}>{lab}</button>)}</div>}
         <button className="v-mute" onClick={() => { if (speak) stopSpeaking(); setSpeak(!speak) }} aria-label={speak ? T('mute') : T('unmute')}><SpeakerIcon on={speak} /></button>
